@@ -7,6 +7,14 @@ app.use(bodyParser.urlencoded({
 	extended: true
 }));
 
+var handlebars = require('express-handlebars')
+		.create({defaultLayout:'main'});
+app.engine('handlebars', handlebars.engine);
+app.set('view engine', 'handlebars');
+
+app.get('/', function(req, res){
+		res.render('home');
+});
 
 
 var threads = [{id: 1, title: 'Titel', text: 'hello'}];
